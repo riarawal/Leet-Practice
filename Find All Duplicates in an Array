@@ -1,0 +1,68 @@
+Find All Duplicates in an Array
+
+Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+Find all the elements that appear twice in this array.
+
+Could you do it without extra space and in O(n) runtime?
+
+Example:
+Input:
+[4,3,2,7,8,2,3,1]
+
+Output:
+[2,3]
+
+-----
+
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         HashMap<Integer, Integer> freqMap=new HashMap<>();
+//         List <Integer> l= new ArrayList<>();
+        
+//         Integer[] newArray = new Integer[nums.length];
+//         int ii = 0;
+//         for (int value : nums) {
+//         newArray[ii++] = Integer.valueOf(value);
+//         }
+        
+//          for(int i=0;i<newArray.length;i++)
+//          {
+//              if(freqMap.containsKey(newArray[i]))
+//              {
+//                 int oldf=freqMap.get(newArray[i]);
+//                  int newf=oldf+1;
+//                  freqMap.put(newArray[i],newf);
+//              }
+//              else{
+//                  freqMap.put(newArray[i],1);
+//              }
+//          }
+        
+//         for(Integer key : freqMap.keySet())
+//         {
+//             int f=freqMap.get(key);
+//             if(f==2)l.add(key);
+//         }
+//         return l;
+//     }
+// }
+
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> list=new ArrayList<>();
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]==nums[i+1])list.add(nums[i]);
+        }
+        return list;  
+    }
+}
+
+----------
+
+Runtime: 16 ms, faster than 30.25% of Java online submissions for Find All Duplicates in an Array.
+Memory Usage: 49 MB, less than 51.34% of Java online submissions for Find All Duplicates in an Array.
+Next challenges:
+Find All Numbers Disappeared in an Array
